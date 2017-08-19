@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.widget.Toast;
 
 import com.aleksandr.aleksandrov.vk.vk.CurrentUser;
+import com.aleksandr.aleksandrov.vk.vk.MyApplication;
 import com.aleksandr.aleksandrov.vk.vk.R;
 import com.aleksandr.aleksandrov.vk.vk.consts.ApiConstants;
 import com.aleksandr.aleksandrov.vk.vk.mvp.presenter.MainPresenter;
@@ -27,6 +28,7 @@ public class MainActivity extends BaseActivity implements MainView {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        MyApplication.getApplicationComponent().inject(this);
 
         mMainPresenter.checkAuth();
     }

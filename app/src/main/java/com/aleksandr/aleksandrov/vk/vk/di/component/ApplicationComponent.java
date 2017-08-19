@@ -2,6 +2,10 @@ package com.aleksandr.aleksandrov.vk.vk.di.component;
 
 import com.aleksandr.aleksandrov.vk.vk.di.module.ApplicationModule;
 import com.aleksandr.aleksandrov.vk.vk.di.module.ManagerModule;
+import com.aleksandr.aleksandrov.vk.vk.di.module.RestModule;
+import com.aleksandr.aleksandrov.vk.vk.ui.activity.BaseActivity;
+import com.aleksandr.aleksandrov.vk.vk.ui.activity.MainActivity;
+import com.aleksandr.aleksandrov.vk.vk.ui.fragment.NewsFeedFragment;
 
 import javax.inject.Singleton;
 
@@ -11,7 +15,13 @@ import dagger.Component;
  * Created by aleksandr on 8/19/17.
  */
 @Singleton
-@Component(modules = {ApplicationModule.class, ManagerModule.class})
+@Component(modules = {ApplicationModule.class, ManagerModule.class, RestModule.class})
 public interface ApplicationComponent {
 
+    // Activities
+    void inject(BaseActivity activity);
+    void inject(MainActivity activity);
+
+    // Fragments
+    void inject(NewsFeedFragment fragment);
 }

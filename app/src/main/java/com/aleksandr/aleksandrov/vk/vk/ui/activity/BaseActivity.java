@@ -5,10 +5,13 @@ import android.support.annotation.LayoutRes;
 import android.support.v7.widget.Toolbar;
 import android.widget.FrameLayout;
 
+import com.aleksandr.aleksandrov.vk.vk.MyApplication;
 import com.aleksandr.aleksandrov.vk.vk.R;
 import com.aleksandr.aleksandrov.vk.vk.common.manager.MyFragmentManager;
 import com.aleksandr.aleksandrov.vk.vk.ui.fragment.BaseFragment;
 import com.arellomobile.mvp.MvpAppCompatActivity;
+
+import javax.inject.Inject;
 
 /**
  * Created by aleksandr on 8/18/17.
@@ -16,15 +19,15 @@ import com.arellomobile.mvp.MvpAppCompatActivity;
 
 public abstract class BaseActivity extends MvpAppCompatActivity {
 
+    @Inject
     MyFragmentManager mFragmentManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        MyApplication.getApplicationComponent().inject(this);
 
         setContentView(R.layout.activity_base);
-
-        mFragmentManager = new MyFragmentManager();
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
 
