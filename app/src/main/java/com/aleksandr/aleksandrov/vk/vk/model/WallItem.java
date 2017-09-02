@@ -1,51 +1,72 @@
 
 package com.aleksandr.aleksandrov.vk.vk.model;
 
+import java.util.ArrayList;
 import java.util.List;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
 public class WallItem {
 
+    public String senderName;
+    public String senderPhoto;
+
     @SerializedName("id")
     @Expose
     private Integer id;
+
     @SerializedName("from_id")
     @Expose
     private Integer fromId;
+
     @SerializedName("owner_id")
     @Expose
     private Integer ownerId;
+
     @SerializedName("date")
     @Expose
     private Integer date;
+
     @SerializedName("marked_as_ads")
     @Expose
     private Integer markedAsAds;
+
     @SerializedName("post_type")
     @Expose
     private String postType;
+
     @SerializedName("text")
     @Expose
     private String text;
+
     @SerializedName("can_pin")
     @Expose
     private Integer canPin;
+
     @SerializedName("attachments")
     @Expose
-    private List<Attachment> attachments = null;
+    private List<Attachment> attachments = new ArrayList<>();
+
+    @SerializedName("copy_history")
+    @Expose
+    private List<WallItem> copyHistory = new ArrayList<>();
+
     @SerializedName("post_source")
     @Expose
     private PostSource postSource;
+
     @SerializedName("comments")
     @Expose
     private Comments comments;
+
     @SerializedName("likes")
     @Expose
     private Likes likes;
+
     @SerializedName("reposts")
     @Expose
     private Reposts reposts;
+
     @SerializedName("views")
     @Expose
     private Views views;
@@ -162,4 +183,30 @@ public class WallItem {
         this.views = views;
     }
 
+    public String getSenderName() {
+        return senderName;
+    }
+
+    public void setSenderName(String senderName) {
+        this.senderName = senderName;
+    }
+
+    public String getSenderPhoto() {
+        return senderPhoto;
+    }
+
+    public void setSenderPhoto(String senderPhoto) {
+        this.senderPhoto = senderPhoto;
+    }
+
+    public boolean haveSharedRepost() {
+        return copyHistory.size() > 0;
+    }
+
+    public WallItem getSharedRepost() {
+        if (haveSharedRepost()) {
+            return copyHistory.get(0);
+        }
+        return null;
+    }
 }

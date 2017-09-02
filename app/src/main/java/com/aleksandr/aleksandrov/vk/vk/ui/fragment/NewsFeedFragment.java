@@ -15,8 +15,11 @@ import com.aleksandr.aleksandrov.vk.vk.CurrentUser;
 import com.aleksandr.aleksandrov.vk.vk.MyApplication;
 import com.aleksandr.aleksandrov.vk.vk.R;
 import com.aleksandr.aleksandrov.vk.vk.common.BaseAdapter;
+import com.aleksandr.aleksandrov.vk.vk.common.utils.VKListHelper;
 import com.aleksandr.aleksandrov.vk.vk.model.WallItem;
+import com.aleksandr.aleksandrov.vk.vk.model.view.BaseViewModel;
 import com.aleksandr.aleksandrov.vk.vk.model.view.NewsFeedItemsBodyViewModel;
+import com.aleksandr.aleksandrov.vk.vk.model.view.NewsItemHeaderViewModel;
 import com.aleksandr.aleksandrov.vk.vk.rest.api.WallApi;
 import com.aleksandr.aleksandrov.vk.vk.rest.model.request.WallGetRequestModel;
 import com.aleksandr.aleksandrov.vk.vk.rest.model.response.BaseItemResponse;
@@ -62,10 +65,13 @@ public class NewsFeedFragment extends BaseFragment {
             @Override
             public void onResponse(Call<WallGetResponse> call, Response<WallGetResponse> response) {
 
-                List<NewsFeedItemsBodyViewModel> list = new ArrayList<>();
+                List<WallItem> wallItems = VKListHelper.getWallList(response.body().response);
+                List<BaseViewModel> list = new ArrayList<>();
 
-                for (WallItem item : response.body().response.getItems())
+                for (WallItem item : wallItems) {
+                    list.add(new NewsItemHeaderViewModel(item));
                     list.add(new NewsFeedItemsBodyViewModel(item));
+                }
 
                 mBaseAdapter.addItems(list);
 
