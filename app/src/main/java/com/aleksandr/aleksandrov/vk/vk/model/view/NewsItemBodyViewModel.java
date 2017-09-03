@@ -10,15 +10,27 @@ import com.aleksandr.aleksandrov.vk.vk.ui.holder.NewsItemBodyHolder;
  * Created by aleksandr on 8/24/17.
  */
 
-public class NewsFeedItemsBodyViewModel extends BaseViewModel {
+public class NewsItemBodyViewModel extends BaseViewModel {
 
     private int mId;
 
     private String mText;
 
-    public NewsFeedItemsBodyViewModel(WallItem wallItem) {
+    private String mAttachmentString;
+
+    private boolean mIsRepost;
+
+    public NewsItemBodyViewModel(WallItem wallItem) {
         this.mId = wallItem.getId();
-        this.mText = wallItem.getText();
+        this.mIsRepost = wallItem.haveSharedRepost();
+
+        if (mIsRepost) {
+            this.mText = wallItem.getSharedRepost().getText();
+            this.mAttachmentString = wallItem.getSharedRepost().getAttachmentsString();
+        } else {
+            this.mText = wallItem.getText();
+            this.mAttachmentString = wallItem.getAttachmentsString();
+        }
     }
 
     @Override
@@ -37,5 +49,9 @@ public class NewsFeedItemsBodyViewModel extends BaseViewModel {
 
     public String getText() {
         return mText;
+    }
+
+    public String getAttachmentString() {
+        return mAttachmentString;
     }
 }

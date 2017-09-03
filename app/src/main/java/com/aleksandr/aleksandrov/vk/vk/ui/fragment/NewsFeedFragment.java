@@ -6,24 +6,19 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.Toast;
 
-import com.aleksandr.aleksandrov.vk.vk.CurrentUser;
 import com.aleksandr.aleksandrov.vk.vk.MyApplication;
 import com.aleksandr.aleksandrov.vk.vk.R;
 import com.aleksandr.aleksandrov.vk.vk.common.BaseAdapter;
 import com.aleksandr.aleksandrov.vk.vk.common.utils.VKListHelper;
 import com.aleksandr.aleksandrov.vk.vk.model.WallItem;
 import com.aleksandr.aleksandrov.vk.vk.model.view.BaseViewModel;
-import com.aleksandr.aleksandrov.vk.vk.model.view.NewsFeedItemsBodyViewModel;
+import com.aleksandr.aleksandrov.vk.vk.model.view.NewsItemBodyViewModel;
 import com.aleksandr.aleksandrov.vk.vk.model.view.NewsItemHeaderViewModel;
 import com.aleksandr.aleksandrov.vk.vk.rest.api.WallApi;
 import com.aleksandr.aleksandrov.vk.vk.rest.model.request.WallGetRequestModel;
-import com.aleksandr.aleksandrov.vk.vk.rest.model.response.BaseItemResponse;
-import com.aleksandr.aleksandrov.vk.vk.rest.model.response.Full;
 import com.aleksandr.aleksandrov.vk.vk.rest.model.response.WallGetResponse;
 
 import java.util.ArrayList;
@@ -70,7 +65,7 @@ public class NewsFeedFragment extends BaseFragment {
 
                 for (WallItem item : wallItems) {
                     list.add(new NewsItemHeaderViewModel(item));
-                    list.add(new NewsFeedItemsBodyViewModel(item));
+                    list.add(new NewsItemBodyViewModel(item));
                 }
 
                 mBaseAdapter.addItems(list);

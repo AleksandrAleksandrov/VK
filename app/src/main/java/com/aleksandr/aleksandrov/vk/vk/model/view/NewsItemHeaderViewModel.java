@@ -29,7 +29,7 @@ public class NewsItemHeaderViewModel extends BaseViewModel {
         mIsRepost = wallItem.haveSharedRepost();
 
         if (mIsRepost)
-            this.nRepostProfileName = wallItem.getSharedRepost().senderName;
+            this.nRepostProfileName = wallItem.getSharedRepost().getSenderName();
     }
 
     @Override

@@ -6,6 +6,7 @@ import com.aleksandr.aleksandrov.vk.vk.di.module.RestModule;
 import com.aleksandr.aleksandrov.vk.vk.ui.activity.BaseActivity;
 import com.aleksandr.aleksandrov.vk.vk.ui.activity.MainActivity;
 import com.aleksandr.aleksandrov.vk.vk.ui.fragment.NewsFeedFragment;
+import com.aleksandr.aleksandrov.vk.vk.ui.holder.NewsItemBodyHolder;
 
 import javax.inject.Singleton;
 
@@ -24,4 +25,7 @@ public interface ApplicationComponent {
 
     // Fragments
     void inject(NewsFeedFragment fragment);
+
+    // holders
+    void inject(NewsItemBodyHolder holder);
 }
