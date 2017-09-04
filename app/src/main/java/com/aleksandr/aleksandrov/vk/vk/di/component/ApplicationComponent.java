@@ -7,6 +7,7 @@ import com.aleksandr.aleksandrov.vk.vk.ui.activity.BaseActivity;
 import com.aleksandr.aleksandrov.vk.vk.ui.activity.MainActivity;
 import com.aleksandr.aleksandrov.vk.vk.ui.fragment.NewsFeedFragment;
 import com.aleksandr.aleksandrov.vk.vk.ui.holder.NewsItemBodyHolder;
+import com.aleksandr.aleksandrov.vk.vk.ui.holder.NewsItemFooterHolder;
 
 import javax.inject.Singleton;
 
@@ -28,4 +29,5 @@ public interface ApplicationComponent {
 
     // holders
     void inject(NewsItemBodyHolder holder);
+    void inject(NewsItemFooterHolder holder);
 }

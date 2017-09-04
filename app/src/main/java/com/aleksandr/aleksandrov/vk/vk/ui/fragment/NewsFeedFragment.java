@@ -16,6 +16,7 @@ import com.aleksandr.aleksandrov.vk.vk.common.utils.VKListHelper;
 import com.aleksandr.aleksandrov.vk.vk.model.WallItem;
 import com.aleksandr.aleksandrov.vk.vk.model.view.BaseViewModel;
 import com.aleksandr.aleksandrov.vk.vk.model.view.NewsItemBodyViewModel;
+import com.aleksandr.aleksandrov.vk.vk.model.view.NewsItemFooterViewModel;
 import com.aleksandr.aleksandrov.vk.vk.model.view.NewsItemHeaderViewModel;
 import com.aleksandr.aleksandrov.vk.vk.rest.api.WallApi;
 import com.aleksandr.aleksandrov.vk.vk.rest.model.request.WallGetRequestModel;
@@ -66,6 +67,7 @@ public class NewsFeedFragment extends BaseFragment {
                 for (WallItem item : wallItems) {
                     list.add(new NewsItemHeaderViewModel(item));
                     list.add(new NewsItemBodyViewModel(item));
+                    list.add(new NewsItemFooterViewModel(item));
                 }
 
                 mBaseAdapter.addItems(list);
