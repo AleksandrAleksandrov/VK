@@ -4,14 +4,10 @@ package com.aleksandr.aleksandrov.vk.vk.ui.fragment;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
-import android.view.View;
 import android.widget.Toast;
 
 import com.aleksandr.aleksandrov.vk.vk.MyApplication;
 import com.aleksandr.aleksandrov.vk.vk.R;
-import com.aleksandr.aleksandrov.vk.vk.common.BaseAdapter;
 import com.aleksandr.aleksandrov.vk.vk.common.utils.VKListHelper;
 import com.aleksandr.aleksandrov.vk.vk.model.WallItem;
 import com.aleksandr.aleksandrov.vk.vk.model.view.BaseViewModel;
@@ -34,14 +30,11 @@ import retrofit2.Response;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class NewsFeedFragment extends BaseFragment {
+public class NewsFeedFragment extends BaseFeedFragment {
 
     @Inject
     WallApi mWallApi;
 
-    RecyclerView mRecyclerView;
-
-    BaseAdapter mBaseAdapter;
 
     public NewsFeedFragment() {
         // Required empty public constructor
@@ -83,31 +76,7 @@ public class NewsFeedFragment extends BaseFragment {
     }
 
     @Override
-    protected int getMainContentLayout() {
-        return R.layout.fragment_feed;
-    }
-
-    @Override
     public int onCreateToolbarTitle() {
         return R.string.screen_name_news;
-    }
-
-    @Override
-    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
-        super.onViewCreated(view, savedInstanceState);
-        setUpRecyclerView(view);
-        setUpAdapter(mRecyclerView);
-    }
-
-    private void setUpRecyclerView(View rootView) {
-        mRecyclerView = rootView.findViewById(R.id.rv_list);
-        mRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-    }
-
-
-    private void setUpAdapter(RecyclerView recyclerView) {
-        mBaseAdapter = new BaseAdapter();
-
-        recyclerView.setAdapter(mBaseAdapter);
     }
 }
